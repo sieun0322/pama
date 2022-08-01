@@ -1,21 +1,32 @@
 package com.example.pama.member;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
-@Table(name="TB_MEMBER")
+@Table(name="MEMBER")
 public class Member {
     @Id
     @Column(name="MEMBER_ID")
     private String id;
 
     @Column(name="NAME")
-    private String name;
+    private String username;
 
+    //대소문자를 구분하지 않는 데이터베이스일 경우, 대소문자 구분없이 매핑.
     private Integer age;
+
+    @Enumerated(EnumType.STRING)
+    private RoleType roleType;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastModifiedDate;
+
+    @Lob
+    private String description;
 
     public String getId() {
         return id;
@@ -25,12 +36,12 @@ public class Member {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public Integer getAge() {
@@ -41,3 +52,4 @@ public class Member {
         this.age = age;
     }
 }
+
