@@ -1,4 +1,4 @@
-package com.example.pama.member;
+package com.example.pama.entity;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -10,7 +10,7 @@ public class Member {
     @Column(name="MEMBER_ID")
     private String id;
 
-    @Column(name="NAME")
+    @Column(name="NAME", nullable = false)
     private String username;
 
     //대소문자를 구분하지 않는 데이터베이스일 경우, 대소문자 구분없이 매핑.
