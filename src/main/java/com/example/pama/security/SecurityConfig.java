@@ -22,17 +22,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)//세션 사용X
                 .and()
                 //.addFilter(corsFilter)//@CrossOrigin(인증x),시큐리티 필터에 등록 인증o
-                .formLogin().disable()
                 .httpBasic().disable()//http-authorization : ID,PW 암호화되지 않는다.(Basic 방식)=>https 사용. 토큰: 위험부담 낮춤(Bearer 방식, 유효시간 존재)
                 //.addFilter(new JwtAuthenticationFilter(authenticationManager()))//AuthenticationManager
                 //.addFilter(new JwtAuthorizationFilter(authenticationManager(),memberRepository))//AuthenticationManager
                 .authorizeRequests()
-                .antMatchers("/api/v1/user/**")
+                .antMatchers("/user/**")
                 .access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
-                .antMatchers("/api/v1/manager/**")
+                .antMatchers("/manager/**")
                 .access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
-                .antMatchers("/api/v1/admin/**")
+                .antMatchers("/admin/**")
                 .access("hasRole('ROLE_ADMIN')")
-                .anyRequest().permitAll();
+                .anyRequest().permitAll()
+                .and()
+                .formLogin()
+                .loginPage("/login");
     }
 }
