@@ -1,23 +1,39 @@
 package com.example.pama.entity;
 
-import javax.persistence.*;
-import java.util.Date;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+
+@Data
 @Entity
+@NoArgsConstructor
 @Table(name="MEMBER")
 public class Member {
     @Id
     @Column(name="MEMBER_ID")
     private String id;
 
+    private String password;
     @Column(name="NAME", nullable = false)
-    private String username;
+    private String name;
 
     //대소문자를 구분하지 않는 데이터베이스일 경우, 대소문자 구분없이 매핑.
     private Integer age;
 
+    private String email;
+
     @Enumerated(EnumType.STRING)
-    private RoleType roleType;
+    private String role;//USER,ADMIN
+
+    private String provider;
+    private String providerId;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
@@ -28,28 +44,16 @@ public class Member {
     @Lob
     private String description;
 
-    public String getId() {
-        return id;
+    @Builder
+    public Member(String name, String password, String email, String role, String provider, String providerId, Timestamp createDate) {
+        this.name = name;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+        this.provider = provider;
+        this.providerId = providerId;
+        this.createdDate = createDate;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
 }
 

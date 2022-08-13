@@ -1,4 +1,4 @@
-package com.example.pama.security;
+package com.example.pama.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -35,6 +35,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/login");
+                .loginPage("/login")
+                .loginProcessingUrl("/login")//시큐리티가 대신 로그인 진행.
+                .defaultSuccessUrl("/");
     }
 }
