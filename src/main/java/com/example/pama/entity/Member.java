@@ -30,7 +30,7 @@ public class Member {
     private String email;
 
     @Enumerated(EnumType.STRING)
-    private String role;//USER,ADMIN
+    private RoleType role;//USER,ADMIN
 
     private String provider;
     private String providerId;
@@ -49,7 +49,7 @@ public class Member {
         this.name = name;
         this.password = password;
         this.email = email;
-        this.role = role;
+        this.role = RoleType.valueOf(role);
         this.provider = provider;
         this.providerId = providerId;
         this.createdDate = createDate;
