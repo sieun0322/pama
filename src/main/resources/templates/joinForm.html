@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입페이지</title>
+</head>
+<body>
+<h1>회원가입페이지</h1>
+<hr/>
+<form action="/join" method="POST">
+    <table>
+
+        <tr>
+            <th>아이디</th>
+            <td>
+                <input type ="text" name = "id" placeholder="id"/>
+            </td>
+        </tr>
+        <tr>
+            <th>비밀번호</th>
+            <td>
+                <input type ="text" name = "password" placeholder="Password"/>
+            </td>
+        </tr>
+        <tr>
+            <th>비밀번호 확인</th>
+            <td>
+                <input type ="text" name = "repassword" placeholder="비밀번호 확인"/>
+            </td>
+        </tr>
+        <tr>
+            <th>닉네임</th>
+            <td>
+                <input type ="text" name = "nickname" placeholder="Nickname"/>
+            </td>
+        </tr>
+        <tr>
+            <th>생년월일</th>
+            <td>
+                <input type ="text" name = "birthday" placeholder="Birthday"/>
+            </td>
+        </tr>
+        <tr>
+            <th>이메일</th>
+            <td>
+                <input type ="text" name = "email" placeholder="Email"/>
+            </td>
+        </tr>
+    </table>
+    <button>회원가입</button>
+</form>
+</body>
+</html>
