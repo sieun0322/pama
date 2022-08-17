@@ -21,8 +21,8 @@ public class Member {
     private String id;
 
     private String password;
-    @Column(name="NAME", nullable = false)
-    private String name;
+    @Column(name="NICKNAME", nullable = false)
+    private String nickname;
 
     //대소문자를 구분하지 않는 데이터베이스일 경우, 대소문자 구분없이 매핑.
     private Integer age;
@@ -45,8 +45,8 @@ public class Member {
     private String description;
 
     @Builder
-    public Member(String name, String password, String email, String role, String provider, String providerId, Timestamp createDate) {
-        this.name = name;
+    public Member(String nickname, String password, String email, String role, String provider, String providerId, Timestamp createDate) {
+        this.nickname = nickname;
         this.password = password;
         this.email = email;
         this.role = RoleType.valueOf(role);
