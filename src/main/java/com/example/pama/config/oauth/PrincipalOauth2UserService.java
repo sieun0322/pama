@@ -2,6 +2,7 @@ package com.example.pama.config.oauth;
 
 import com.example.pama.config.auth.PrincipalDetails;
 import com.example.pama.entity.Member;
+import com.example.pama.entity.RoleType;
 import com.example.pama.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -47,15 +48,15 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
         String email = oAuth2UserInfo.getEmail();
         String role = "ROLE_USER";
 
-        Member memberEntity = memberRepository.findByName(username);
+        Member memberEntity = memberRepository.findByNickname(username);
 
         if(memberEntity == null){
             System.out.println("[최초 로그인]");
             memberEntity = Member.builder()
-                    .name(username)
+                    .nickname(username)
                     .password(password)
                     .email(email)
-                    .role(role)
+                    .role(RoleType.USER)
                     .provider(provider)
                     .providerId(providerId)
                     .build();

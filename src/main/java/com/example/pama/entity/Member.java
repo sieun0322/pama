@@ -41,15 +41,12 @@ public class Member {
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastModifiedDate;
 
-    @Lob
-    private String description;
-
     @Builder
-    public Member(String nickname, String password, String email, String role, String provider, String providerId, Timestamp createDate) {
+    public Member(String nickname, String password, String email, RoleType role, String provider, String providerId, Timestamp createDate) {
         this.nickname = nickname;
         this.password = password;
         this.email = email;
-        this.role = RoleType.valueOf(role);
+        this.role = role;
         this.provider = provider;
         this.providerId = providerId;
         this.createdDate = createDate;
